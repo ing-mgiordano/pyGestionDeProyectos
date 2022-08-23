@@ -41,3 +41,6 @@ Creamos ENDPOINT de autenticacion. creamos la funcion autenticar y en postman cr
 realizamos la comprobacion si existe usuario, si el usuario esta confirmado y por ultimo comprobamos password.
 
 Creamos un JWT (JSON web token - https://jwt.io/). Instalamos JWT con npm i jsonwebtoken y creamos otro helpers generarJWR.js
+
+Creamos ENDPOINT para la confirmacion de las cuentas.
+en Routers creamos una nueva ruta para confirmar la cuenta creando la funcion confirmar.
