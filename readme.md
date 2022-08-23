@@ -44,3 +44,6 @@ Creamos un JWT (JSON web token - https://jwt.io/). Instalamos JWT con npm i json
 
 Creamos ENDPOINT para la confirmacion de las cuentas.
 en Routers creamos una nueva ruta para confirmar la cuenta creando la funcion confirmar.
+
+Creamos una funcion para resetear el password en caso de que el usuario se olvide. 
+creamos una nueva ruta en Routes para enviar un nuevo token y creamos una nueva ruta para confirmar ese token

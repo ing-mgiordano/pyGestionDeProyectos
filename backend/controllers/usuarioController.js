@@ -69,6 +69,34 @@ const confirmar = async (req, res) => {
     }
 }
 
+// Olvido de contraseña
+const olvidePassword = async (req, res) => {
+    const {email} = req.body  //le pedimos al usuario su email
+    const usuario = await Usuario.findOne({email})
+    if(!usuario) {
+        const error = new Error("El Usuario no existe")
+        return res.status(404).json({msg: error.message})
+    }
+    try {
+       usuario.token = generarID()
+       await usuario.save()
+       res.json({msg: "Hemos enviado un email con las instrucciones"})
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const comprobarToken = async (req, res) => {
+    const {token} = req.params
+    const tokenValido = await Usuario.findOne({token})
+    if(tokenValido) {
+        res.json({msg: "Token Valido y el Usuario Existe"})
+    } else {
+        const error = new Error("Token no Valido")
+        return res.status(404).json({msg: error.message})
+    }
+}
+
 export {
-    registrar, autenticar, confirmar
+    registrar, autenticar, confirmar, olvidePassword, comprobarToken
 }
