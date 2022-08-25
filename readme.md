@@ -19,7 +19,7 @@ intalamos nodemon para que se reinicie el servidor automaticamente cada vez que 
 usamos MongoDB como base de datos. 
 conectamos MongoDB con Compass y conectamos la app con mongodb+srv://ing-mgiordano:<password>@cluster0.vt6ax.mongodb.net/?retryWrites=true&w=majority .
 cramos el archivo db.js en config.
-en el directorio base del py intalamos mongoose: npm i mongoose
+en el directorio base del py intalamos mongoose: npm i mongoose para conetar la App a la base de datos(db)
 
 en el directorio backend
 ocultamos la conexion de la BD con variables de entorno: intalamos npm i dotenv.
@@ -46,4 +46,5 @@ Creamos ENDPOINT para la confirmacion de las cuentas.
 en Routers creamos una nueva ruta para confirmar la cuenta creando la funcion confirmar.
 
 Creamos una funcion para resetear el password en caso de que el usuario se olvide. 
-creamos una nueva ruta en Routes para enviar un nuevo token y creamos una nueva ruta para confirmar ese token
+creamos una nueva ruta en Routes para enviar un nuevo token y creamos una nueva ruta para confirmar ese token.
+Ahora creamos una nueva ruta para modificar el password
