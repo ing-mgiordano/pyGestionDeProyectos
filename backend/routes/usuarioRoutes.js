@@ -5,8 +5,10 @@ import {
     confirmar,
     olvidePassword,
     comprobarToken,
-    nuevoPassword 
+    nuevoPassword,
+    perfil
 } from "../controllers/usuarioController.js";
+import checkAuth from "../middleware/checkAuth.js";
 
 const router = express.Router()
 
@@ -17,5 +19,6 @@ router.get('/confirmar/:token', confirmar) //con los : generamos routing dinamic
 router.post('/olvide-password', olvidePassword)
 router.route('/olvide-password/:token').get(comprobarToken).post(nuevoPassword) // si tenemos dos rutas iguales pero con diferente HTTP podemos unificarlas con express
 
+router.get('/perfil', checkAuth, perfil)
 
 export default router

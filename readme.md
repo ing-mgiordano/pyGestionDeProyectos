@@ -48,3 +48,5 @@ en Routers creamos una nueva ruta para confirmar la cuenta creando la funcion co
 Creamos una funcion para resetear el password en caso de que el usuario se olvide. 
 creamos una nueva ruta en Routes para enviar un nuevo token y creamos una nueva ruta para confirmar ese token.
 Ahora creamos una nueva ruta para modificar el password
+
+Creamos el middleware para realizar el checkeo de que el usuario este autenticado y mostrar su perfil
