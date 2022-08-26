@@ -54,3 +54,5 @@ Creamos el middleware para realizar el checkeo de que el usuario este autenticad
 Creamos el MODELO para Proyectos
 Creamos el CONTROLADOR para Proyectos
 Creamos routes para los proyectos
+
+Dentro del Controlador Creamos la funcion de nuevo proyecto

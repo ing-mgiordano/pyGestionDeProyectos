@@ -1,4 +1,4 @@
-
+import Proyecto from "../models/Proyecto.js"
 
 //Lista de py del usuario autenticado
 const obtenerProyectos = async (req, res) => {
@@ -7,7 +7,18 @@ const obtenerProyectos = async (req, res) => {
 
 //Crea nuevo py
 const nuevoProyecto = async (req, res) => {
+    /* console.log(req.body)
+    console.log(req.usuario) */
 
+    const proyecto = new Proyecto(req.body)
+    proyecto.creador = req.usuario._id
+
+    try {
+        const proyectoAlmacenado = await proyecto.save()
+        res.json(proyectoAlmacenado)
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 //Lista un py y tareas asociadas a el

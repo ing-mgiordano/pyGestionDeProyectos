@@ -9,7 +9,6 @@ import {
     eliminarColaborador,
     obtenerTareas
 } from "../controllers/proyectoController.js"
-import { autenticar } from "../controllers/usuarioController.js"
 import checkAuth from "../middleware/checkAuth.js"
 
 const router = express.Router()
