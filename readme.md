@@ -50,3 +50,7 @@ creamos una nueva ruta en Routes para enviar un nuevo token y creamos una nueva 
 Ahora creamos una nueva ruta para modificar el password
 
 Creamos el middleware para realizar el checkeo de que el usuario este autenticado y mostrar su perfil
+
+Creamos el MODELO para Proyectos
+Creamos el CONTROLADOR para Proyectos
+Creamos routes para los proyectos
