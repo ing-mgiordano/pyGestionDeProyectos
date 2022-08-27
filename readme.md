@@ -61,3 +61,6 @@ Dentro del Controlador Creamos:
  la funcion de obtener un proyecto
  la funcion para ediar un proyecto
  la funcion para eliminar un proyecto
+
+Creamos el Modelo el Controlador y Routes para Tareas
+ y creamos las funciones del controlador para las tareas
