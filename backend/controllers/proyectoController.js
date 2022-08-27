@@ -25,7 +25,22 @@ const nuevoProyecto = async (req, res) => {
 
 //Lista un py y tareas asociadas a el
 const obtenerProyecto = async (req, res) => {
+    const {id} = req.params
+    /* console.log(id) */
+    const proyecto = await Proyecto.findById(id)
+    /* console.log(proyecto) */
+   if (!proyecto) {
+        const error = new Error("No Encontrado")
+        return res.status(404).json({ msg: error.message })
+   }
 
+   console.log(proyecto.creador.toString() === req.usuario._id.toString()) // compruevo que es el usuario el creador del proyecto
+   if (proyecto.creador.toString() !== req.usuario._id.toString()) {
+        const error = new Error("No Tienes Permisos")
+        return res.status(401).json({ msg: error.message })
+   }
+
+   res.json(proyecto)
 }
 
 //Editar py

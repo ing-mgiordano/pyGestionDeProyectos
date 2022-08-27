@@ -57,4 +57,5 @@ Creamos routes para los proyectos
 
 Dentro del Controlador Creamos:
  la funcion de nuevo proyecto
- la funcion de ontener proyectos 
+ la funcion de obtener proyectos 
+ la funcion de obtener un proyecto
