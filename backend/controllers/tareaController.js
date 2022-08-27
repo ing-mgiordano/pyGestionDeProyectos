@@ -12,7 +12,7 @@ const agregarTarea = async (req, res) => {
     }
    if (existeProyecto.creador.toString() !== req.usuario._id.toString()) {
         const error = new Error("No Tienes Permisos")
-        return res.status(401).json({ msg: error.message })
+        return res.status(403).json({ msg: error.message })
     }
 
     try {
@@ -24,7 +24,19 @@ const agregarTarea = async (req, res) => {
 }
 
 const obtenerTarea = async (req, res) => {
-    
+    const {id} = req.params
+    const tarea = await Tarea.findById(id).populate("proyecto")
+    /* console.log(tarea) */
+
+    if (!tarea) {
+        const error = new Error("La Tarea no existe")
+        return res.status(404).json({ msg: error.message })
+    }
+    if (tarea.proyecto.creador.toString() !== req.usuario._id.toString()) {
+        const error = new Error("No Tienes Permisos")
+        return res.status(403).json({ msg: error.message })
+    }
+    res.json(tarea)
 }
 
 const actualizarTarea = async (req, res) => {
