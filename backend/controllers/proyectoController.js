@@ -45,12 +45,55 @@ const obtenerProyecto = async (req, res) => {
 
 //Editar py
 const editarProyecto = async (req, res) => {
+    const {id} = req.params
 
+    const proyecto = await Proyecto.findById(id)
+
+   if (!proyecto) {
+        const error = new Error("No Encontrado")
+        return res.status(404).json({ msg: error.message })
+   }
+
+   if (proyecto.creador.toString() !== req.usuario._id.toString()) {
+        const error = new Error("No Tienes Permisos")
+        return res.status(401).json({ msg: error.message })
+   }
+
+   proyecto.nombre = req.body.nombre || proyecto.nombre
+   proyecto.descripcion = req.body.descripcion || proyecto.descripcion
+   proyecto.fechaEntrega = req.body.fechaEntrega || proyecto.fechaEntrega
+   proyecto.cliente = req.body.cliente || proyecto.cliente
+
+   try {
+        const proyectoEditado = await proyecto.save()
+        res.json(proyectoEditado)
+   } catch (error) {
+        console.log(error)
+   }
 }
 
 //Elimiar py
 const eliminarProyecto = async (req, res) => {
+    const {id} = req.params
 
+    const proyecto = await Proyecto.findById(id)
+
+   if (!proyecto) {
+        const error = new Error("No Encontrado")
+        return res.status(404).json({ msg: error.message })
+   }
+
+   if (proyecto.creador.toString() !== req.usuario._id.toString()) {
+        const error = new Error("No Tienes Permisos")
+        return res.status(401).json({ msg: error.message })
+   }
+
+   try {
+        await proyecto.deleteOne()
+        res.json({msg: "Proyecto Eliminado Correctamente"})
+   } catch (error) {
+        console.log(error)
+   }
 }
 
 //Agregar colaborador
