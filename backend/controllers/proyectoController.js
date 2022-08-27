@@ -2,7 +2,9 @@ import Proyecto from "../models/Proyecto.js"
 
 //Lista de py del usuario autenticado
 const obtenerProyectos = async (req, res) => {
+    const proyectos = await Proyecto.find().where("creador").equals(req.usuario)
 
+    res.json(proyectos)
 }
 
 //Crea nuevo py

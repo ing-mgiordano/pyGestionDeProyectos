@@ -55,4 +55,6 @@ Creamos el MODELO para Proyectos
 Creamos el CONTROLADOR para Proyectos
 Creamos routes para los proyectos
 
-Dentro del Controlador Creamos la funcion de nuevo proyecto
+Dentro del Controlador Creamos:
+ la funcion de nuevo proyecto
+ la funcion de ontener proyectos 
