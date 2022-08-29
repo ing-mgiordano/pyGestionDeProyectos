@@ -2,7 +2,7 @@
 
 https://mongoosejs.com/docs/guide.html
 
-en la carpeta backend:
+#BACKEND
 
 creamos el package.json: en la terminal escribimos npm init.
 
@@ -64,3 +64,30 @@ Dentro del Controlador Creamos:
 
 Creamos el Modelo el Controlador y Routes para Tareas
  y creamos las funciones del controlador para las tareas
+
+
+#FRONTEND
+
+npm create vite@latest
+framework REACT
+
+intalamos las dependencias con npm intall
+intalamos axios para peticiones HTTPpara cominacion con backend y react-router-dom para tener routing en el py
+npm i axios react-router-dom
+
+y corremos el py. npm run dev
+
+intalamos tailwindcss para los estilos.
+
+npm i -D tailwindcss postcss autoprefixer
+
+creamos el archivo de configuracion de tailwindcss y post
+npx tailwindcss init -p
+
+en tailwind.config agregamos content: ["index.html", "./src/**/*.jsx"]
+
+y en index.css escribimos @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+reiniciamos el servidor y lo volvemos a ejecutar.
