@@ -6,8 +6,7 @@ import {
     editarProyecto,
     eliminarProyecto,
     agregarColaborador,
-    eliminarColaborador,
-    obtenerTareas
+    eliminarColaborador
 } from "../controllers/proyectoController.js"
 import checkAuth from "../middleware/checkAuth.js"
 
@@ -20,7 +19,6 @@ router.route('/:id')
     .get(checkAuth, obtenerProyecto)
     .put(checkAuth, editarProyecto)
     .delete(checkAuth, eliminarProyecto) //delete eliminar un recurso completo
-router.get('/tareas/:id', checkAuth, obtenerTareas)
 router.post('/agregar-colaborador/:id', checkAuth, agregarColaborador)
 router.post('/eliminar-colaborador/:id', checkAuth, eliminarColaborador) //usamos post y no delete porque eliminamos una parte del recurso
 
