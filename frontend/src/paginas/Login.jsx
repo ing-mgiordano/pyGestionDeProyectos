@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 
 const Login = () => {
@@ -43,6 +44,22 @@ const Login = () => {
                 className="bg-sky-700 w-full mb-5 py-3 text-white uppercase font-bold rounded-xl hover:cursor-pointer hover:bg-sky-800 transition-colors"
             />
         </form>
+
+        <nav className="lg:flex lg:justify-between">
+            <Link
+                className="block text-center my-5 text-slate-500 uppercase text-sm"
+                to='registrar'
+            >
+                ¿No tienes una cuenta? Registrate
+            </Link>
+            <Link
+                className="block text-center my-5 text-slate-500 uppercase text-sm"
+                to='olvide-password'
+            >
+                Olvide Mi Password
+            </Link>
+
+        </nav>
     </>
   )
 }
