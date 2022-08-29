@@ -47,13 +47,13 @@ const Login = () => {
         <nav className="lg:flex lg:justify-between">
             <Link
                 className="block text-center my-5 text-slate-500 uppercase text-sm"
-                to='registrar'
+                to='/registrar'
             >
                 ¿No tienes una cuenta? Registrate
             </Link>
             <Link
                 className="block text-center my-5 text-slate-500 uppercase text-sm"
-                to='olvide-password'
+                to='/olvide-password'
             >
                 Olvide Mi Password
             </Link>
