@@ -91,3 +91,8 @@ y en index.css escribimos @tailwind base;
 @tailwind utilities;
 
 reiniciamos el servidor y lo volvemos a ejecutar.
+
+Creamos routing. 
+vamos a tener dos grupos de rutas uno privado para los usuarios registrados y una publica para registrarser
+
+Creamos el layout principal con todas las paginas publicas 
