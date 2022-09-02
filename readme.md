@@ -111,3 +111,10 @@ y lo importamos en index.js en el backend
 creamos la whitelist y configuramos cors.
 
 Agregamos las rutas de la API como variables de entorno
+
+Instalamos Nodemailer para enviar el email con Node, para confirmacion de la cuenta  (https://nodemailer.com/about/) en el backend
+npm install nodemailer.
+
+Tenemos que configurar un servidor de emails, podemos utilizar mailtrap (https://mailtrap.io/). 
+
+copiamos las credenciales para Nodemailer y creamos un archivo helpers para enviar los emails de ocnfirmacion  y de olvide-password
