@@ -109,3 +109,5 @@ npm i cors
 y lo importamos en index.js en el backend
 
 creamos la whitelist y configuramos cors.
+
+Agregamos las rutas de la API como variables de entorno

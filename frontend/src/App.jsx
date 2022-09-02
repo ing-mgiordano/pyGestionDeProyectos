@@ -6,6 +6,9 @@ import OlvidePassword from './paginas/OlvidePassword'
 import NuevoPassword from './paginas/NuevoPassword'
 import ConfirmarCuenta from './paginas/ConfirmarCuenta'
 
+//mostrar variables de entorno. En vite utilizamos import.meta
+/* console.log(import.meta.env.VITE_BACKEND_URL) */
+
 function App() {
 
   return (
