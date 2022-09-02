@@ -95,4 +95,17 @@ reiniciamos el servidor y lo volvemos a ejecutar.
 Creamos routing. 
 vamos a tener dos grupos de rutas uno privado para los usuarios registrados y una publica para registrarser
 
-Creamos el layout principal con todas las paginas publicas 
+Creamos el layout principal con todas las paginas publicas, creamos todas las paginas necesarias y añadimos routing entre ellas.
+
+Agregamos useState en el formulario de registro y validamos el formulario. 
+Creamos el componente de Alerta.jsx
+Validamos que password sean iguales
+
+Una vez validados los campos de Registro, enviamos un request a la API. Conectamos backend con frontend mediante axios.
+Debemos habilitar peticiones por CORS en el backend para poder conectas las peticiones entre los localhost
+
+en la carpeta del backend intalamos CORS 
+npm i cors 
+y lo importamos en index.js en el backend
+
+creamos la whitelist y configuramos cors.

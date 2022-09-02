@@ -1,5 +1,6 @@
 import express  from 'express'  // esta notacion la podemos usar si dentro del package.json agregamos "type": "module"
 import dotenv from 'dotenv'
+import cors from 'cors'
 import conectarDB from './config/db.js'
 import usuarioRoutes from './routes/usuarioRoutes.js'
 import proyectoRoutes from './routes/proyectoRoutes.js'
@@ -12,8 +13,23 @@ dotenv.config()
 
 conectarDB()
 
-//Rounting
+//Config CORS
+const whitelist = ['http://127.0.0.1:5173']
 
+const corsOptions = {
+    origin: function(origin, callback) {
+        if(whitelist.includes(origin)) {
+            //puede consultar la API
+            callback(null, true)
+        } else {
+            //no esta permitido
+            callback(new Error('Error de CORS'))
+        }
+    }
+}
+app.use(cors(corsOptions))
+
+//Rounting
 app.use('/api/usuarios', usuarioRoutes)
 app.use('/api/proyectos', proyectoRoutes)
 app.use('/api/tareas', tareaRoutes)
