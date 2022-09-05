@@ -117,4 +117,7 @@ npm install nodemailer.
 
 Tenemos que configurar un servidor de emails, podemos utilizar mailtrap (https://mailtrap.io/). 
 
-copiamos las credenciales para Nodemailer y creamos un archivo helpers para enviar los emails de ocnfirmacion  y de olvide-password
+copiamos las credenciales para Nodemailer y creamos un archivo helpers para enviar los emails de confirmacion y de olvide-password.
+
+creamos la funcion de confirmarcuenta
+Confirmamos cuenta via token
