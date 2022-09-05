@@ -126,3 +126,5 @@ Creamos funcion para recuperar password
 
 Movemos todo a una instancia de Axios con variables de entorno
 Creamos carpeta config y creamos archivo clienteAxios
+
+Validamos y autenticmos el inicio de secion del usuario y almacenamos el token del usuario en localstorage porq para poder crear proyectos o modificar algo necesitamos el token de validacion del usuario
