@@ -121,3 +121,5 @@ copiamos las credenciales para Nodemailer y creamos un archivo helpers para envi
 
 creamos la funcion de confirmarcuenta
 Confirmamos cuenta via token
+
+Creamos funcion para recuperar password
