@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom" //useParams para tener acceso a la info de las URLS
-import axios from "axios"
+import clienteAxios from "../config/clienteAxios"
 import Alerta from "../components/Alerta"
 
 const ConfirmarCuenta = () => {
@@ -15,8 +15,8 @@ const ConfirmarCuenta = () => {
   useEffect(() => {
     const confirmarCuenta = async () => {
       try {
-        const url = `http://localhost:4000/api/usuarios/confirmar/${id}`  // url creada en Postman para confirmar cuenta
-        const {data} = await axios(url) //get por default
+        const url = `/usuarios/confirmar/${id}`  // url creada en Postman para confirmar cuenta
+        const {data} = await clienteAxios(url) //get por default
         console.log(data)
 
         setAlerta({

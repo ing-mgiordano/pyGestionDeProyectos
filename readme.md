@@ -123,3 +123,6 @@ creamos la funcion de confirmarcuenta
 Confirmamos cuenta via token
 
 Creamos funcion para recuperar password
+
+Movemos todo a una instancia de Axios con variables de entorno
+Creamos carpeta config y creamos archivo clienteAxios
