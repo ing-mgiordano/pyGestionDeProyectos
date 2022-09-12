@@ -146,3 +146,5 @@ Dentro del area de proyectos creamos el header y la sidebar
 Creamos la ruta a nuevo proyecto
 
 Creamos el context para proyectos y creamos el hook para el context de proyectos
+
+Creamos el formulario para crear un nuevo proyecto, lo validamos y enviamos los datos al context
