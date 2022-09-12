@@ -147,4 +147,6 @@ Creamos la ruta a nuevo proyecto
 
 Creamos el context para proyectos y creamos el hook para el context de proyectos
 
-Creamos el formulario para crear un nuevo proyecto, lo validamos y enviamos los datos al context
+Creamos el formulario para crear un nuevo proyecto, lo validamos y enviamos los datos al context.
+
+Obtenemos los datos del proyecto y los mostramos en la pagina proyectos. 

@@ -11,22 +11,27 @@ const FormularioProyecto = () => {
 
     const { mostrarAlerta, alerta, submitProyecto } = useProyectos()
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault()
 
         if([nombre, descripcion, fechaEntrega, cliente].includes('')) {
             mostrarAlerta({
-                msg: " Todos los Campos son Obligatorios",
+                msg: "Todos los Campos son Obligatorios",
                 error: true
             })
             return
         }
-        submitProyecto({
+        await submitProyecto({
             nombre,
             descripcion,
             fechaEntrega,
             cliente
         })
+
+        setNombre('')
+        setDescripcion('')
+        setFechaEntrega('')
+        setCliente('')
     }
 
     const {msg} = alerta
