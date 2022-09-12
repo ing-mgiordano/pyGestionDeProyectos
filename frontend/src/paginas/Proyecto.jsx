@@ -7,16 +7,22 @@ const Proyecto = () => {
     const params = useParams()
     /* console.log(params) */
 
-    const { obtenerProyecto } = useProyectos()
+    const { obtenerProyecto, proyecto, cargando } = useProyectos()
 
     useEffect(() => {
         obtenerProyecto(params.id)
     }, [])
 
+    const { nombre } = proyecto
+
   return (
-    <div>
-      py
-    </div>
+    cargando ? '...' : (
+        <div>
+            <h1 className="font-black text-4xl">
+                {nombre}
+            </h1>
+        </div>
+    )
   )
 }
 
