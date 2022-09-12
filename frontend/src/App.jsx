@@ -7,6 +7,7 @@ import OlvidePassword from './paginas/OlvidePassword'
 import NuevoPassword from './paginas/NuevoPassword'
 import ConfirmarCuenta from './paginas/ConfirmarCuenta'
 import Proyectos from './paginas/Proyectos'
+import NuevoProyecto from './paginas/NuevoProyecto'
 import { AuthProvider } from './context/AuthProvider'
 
 //mostrar variables de entorno. En vite utilizamos import.meta
@@ -18,7 +19,7 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <Routes>
-          <Route path='/' element={<AuthLayout />}> {/* Seccion publica */}
+          <Route path='/' element={<AuthLayout />} > {/* Seccion publica */}
             <Route index element={<Login />} /> {/* index es lo q se va a cargar en el path /  */}
             <Route path='registrar' element={<Registrar />} />
             <Route path='olvide-password' element={<OlvidePassword />} />
@@ -26,8 +27,9 @@ function App() {
             <Route path='confirmar/:id' element={<ConfirmarCuenta />} />
           </Route>
 
-          <Route path='/proyectos' element={<RutaProtegida />}>
+          <Route path='/proyectos' element={<RutaProtegida />} >
             <Route index element={<Proyectos />} />
+            <Route path='crear-proyecto' element={<NuevoProyecto />} />
           </Route>
         </Routes>
       </AuthProvider>

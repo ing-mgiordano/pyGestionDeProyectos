@@ -140,3 +140,7 @@ Creamos el routing para el area privada
 Definimos el area privada dentro de App.jsx
 
 Realizamos la autenticacion del usuario para poder acceder al area privada 
+
+Dentro del area de proyectos creamos el header y la sidebar
+
+Creamos la ruta a nuevo proyecto
