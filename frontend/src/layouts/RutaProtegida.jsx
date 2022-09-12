@@ -9,7 +9,7 @@ const RutaProtegida = () => {
 
     if(cargando) return 'cargando...'
 
-    console.log(auth)
+    /* console.log(auth) */
 
     return (
         <>

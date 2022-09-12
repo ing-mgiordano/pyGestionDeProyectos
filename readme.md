@@ -144,3 +144,5 @@ Realizamos la autenticacion del usuario para poder acceder al area privada
 Dentro del area de proyectos creamos el header y la sidebar
 
 Creamos la ruta a nuevo proyecto
+
+Creamos el context para proyectos y creamos el hook para el context de proyectos
