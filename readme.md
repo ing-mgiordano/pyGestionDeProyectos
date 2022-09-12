@@ -150,3 +150,7 @@ Creamos el context para proyectos y creamos el hook para el context de proyectos
 Creamos el formulario para crear un nuevo proyecto, lo validamos y enviamos los datos al context.
 
 Obtenemos los datos del proyecto y los mostramos en la pagina proyectos. 
+
+Creamos una copia del array proyectos y le agregamos data nuevamente para que se muestre el ultimo py creado sin tener que actualizar la pagina
+
+Creamos el componente proyecto para poder visualizar un proyecto y sus tareas mediante su ID
