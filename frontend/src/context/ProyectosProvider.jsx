@@ -72,7 +72,7 @@ const ProyectosProvider = ({children}) => {
             }
             const { data } = await clienteAxios.put(`/proyectos/${proyecto.id}`, proyecto, config)
             /* console.log(data) */
-            
+
             //Sincronizamos el state
             const proyectosActualizados = proyectos.map(proyectoState => 
                 proyectoState._id === data._id ? data : proyectoState
@@ -148,6 +148,42 @@ const ProyectosProvider = ({children}) => {
         }
     }
 
+    const eliminarProyecto = async id => {
+        try {
+            const token = localStorage.getItem('token')
+                if(!token) return
+    
+            //configuracion para el token de autenticacion (mirar el middleware)
+            const config = {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                }
+            }
+            const { data } = await clienteAxios.delete(`/proyectos/${id}`, config)
+            /* console.log(data) */
+
+            //Sincronizamos el state
+            const proyectosActualizados = proyectos.filter(proyectoState => 
+                proyectoState._id !== id
+            )
+            /* console.log(proyectosActualizados) */
+            setProyectos(proyectosActualizados)
+            
+            setAlerta({
+                msg: data.msg,
+                error: true
+            })
+
+            setTimeout(() => {
+                setAlerta({})
+                navigate('/proyectos')
+            }, 4000)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
         <ProyectosContext.Provider
             value={{
@@ -157,7 +193,8 @@ const ProyectosProvider = ({children}) => {
                 submitProyecto,
                 obtenerProyecto,
                 proyecto,
-                cargando
+                cargando,
+                eliminarProyecto
             }}
         >
             {children}

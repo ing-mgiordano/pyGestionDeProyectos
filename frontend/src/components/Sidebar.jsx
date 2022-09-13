@@ -7,7 +7,7 @@ const Sidebar = () => {
     /* console.log(auth) */
 
     return (
-        <aside className="md:w-80 lg:w-96 px-5 py-10 bg-gray-300">
+        <aside className="md:w-80 lg:w-96 px-5 py-10 bg-gray-200">
             <p className="text-xl font-bold">Hola: {auth.nombre}</p>
 
             <Link

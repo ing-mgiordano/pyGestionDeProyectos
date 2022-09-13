@@ -160,3 +160,7 @@ vamos a https://heroicons.com/ y seleccionamos un icono de editar.
 Creamos la pagina de EditarProyecto
 
 Actualizamos el state para visualizar las ediciones realizadas
+
+Creamos la funcion para eliminar un proyecto
+vamos a https://heroicons.com/ y buscamos un icono de trash.
+Actualizamos el state para eliminar el py
