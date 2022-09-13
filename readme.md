@@ -164,3 +164,6 @@ Actualizamos el state para visualizar las ediciones realizadas
 Creamos la funcion para eliminar un proyecto
 vamos a https://heroicons.com/ y buscamos un icono de trash.
 Actualizamos el state para eliminar el py
+
+Creamos boton para agregar tareas al py
+Agregamos una ventana modal usando https://headlessui.com/ Headless UI. Intalamos una ventana modal npm install @headlessui/react y creamos un componente Modal. Creamos el formulario para crear tareas dentro del modal.
