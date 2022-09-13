@@ -49,6 +49,53 @@ const ProyectosProvider = ({children}) => {
 
     const submitProyecto = async proyecto => {
 
+        /* console.log(proyecto) */
+        
+        if(proyecto.id) {
+            await editarProyecto(proyecto)
+        } else {
+            await nuevoProyecto(proyecto)
+        }
+    }
+
+    const editarProyecto = async proyecto => {
+        try {
+            const token = localStorage.getItem('token')
+            if(!token) return
+
+            //configuracion para el token de autenticacion (mirar el middleware)
+            const config = {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                }
+            }
+            const { data } = await clienteAxios.put(`/proyectos/${proyecto.id}`, proyecto, config)
+            /* console.log(data) */
+            
+            //Sincronizamos el state
+            const proyectosActualizados = proyectos.map(proyectoState => 
+                proyectoState._id === data._id ? data : proyectoState
+            )
+
+            /* console.log(proyectosActualizados) */
+            setProyectos(proyectosActualizados)
+            
+            mostrarAlerta({
+                msg: 'Proyecto Actualizado Correctamente',
+                error: false
+            })
+            
+            setTimeout(() => {
+                navigate(`/proyectos`)
+            }, 4000)
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const nuevoProyecto = async proyecto => {
         try {
             const token = localStorage.getItem('token')
             if(!token) return

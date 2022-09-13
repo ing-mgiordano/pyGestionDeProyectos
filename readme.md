@@ -158,3 +158,5 @@ Creamos el componente proyecto para poder visualizar un proyecto y sus tareas me
 Añadimos routing para poder editar un py.
 vamos a https://heroicons.com/ y seleccionamos un icono de editar.
 Creamos la pagina de EditarProyecto
+
+Actualizamos el state para visualizar las ediciones realizadas

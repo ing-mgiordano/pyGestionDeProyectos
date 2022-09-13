@@ -35,12 +35,13 @@ const FormularioProyecto = () => {
             return
         }
         await submitProyecto({
+            id,
             nombre,
             descripcion,
             fechaEntrega,
             cliente
         })
-
+        setId(null)
         setNombre('')
         setDescripcion('')
         setFechaEntrega('')
