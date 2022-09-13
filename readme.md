@@ -153,4 +153,8 @@ Obtenemos los datos del proyecto y los mostramos en la pagina proyectos.
 
 Creamos una copia del array proyectos y le agregamos data nuevamente para que se muestre el ultimo py creado sin tener que actualizar la pagina
 
-Creamos el componente proyecto para poder visualizar un proyecto y sus tareas mediante su ID
+Creamos el componente proyecto para poder visualizar un proyecto y sus tareas mediante su ID.
+
+Añadimos routing para poder editar un py.
+vamos a https://heroicons.com/ y seleccionamos un icono de editar.
+Creamos la pagina de EditarProyecto
