@@ -168,3 +168,9 @@ Actualizamos el state para eliminar el py
 Creamos boton para agregar tareas al py
 Agregamos una ventana modal usando https://headlessui.com/ Headless UI. Intalamos una ventana modal npm install @headlessui/react y creamos un componente Modal. Creamos el formulario para crear tareas dentro del modal.
 Validamos el formulario y enviamos los datos obtenidos de tarea a la base de datos.
+
+En el backend almacenamos el ID de las tareas en los proyectos que pertenecen c/u (pyoyecto.js)
+
+En tareasController agregamos la tarea mediante un push(). (lo podemos usar porq es node, no react)
+
+En proyectoController agrego un populate a la funcion de obtenerProyecto y en la funcion obtenerProyectos agregamos select("-tareas") para que no me liste las tareas cuando consulto los proyectos en general
