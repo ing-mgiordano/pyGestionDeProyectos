@@ -1,18 +1,39 @@
 import { Fragment, useState, useEffect } from 'react'
 import useProyectos from '../hooks/useProyectos'
 import { Dialog, Transition } from '@headlessui/react'
+import Alerta from './Alerta'
+import { useParams } from 'react-router-dom'
 
 
 const ModalFormularioTarea = () => {
 
     const PRIORIDAD = ['Baja', 'Media', 'Alta']
 
-    const { modalFormularioTarea, handleModalTarea } = useProyectos()
+    const { modalFormularioTarea, handleModalTarea, mostrarAlerta, alerta, submitTarea } = useProyectos()
+
+    const params = useParams()
 
     const [nombre, setNombre] = useState('')
     const [descripcion, setDescripcion] = useState('')
+    const [fechaEntrega, setFechaEntrega] = useState('')
     const [prioridad, setPrioridad] = useState('')
- 
+
+    const handleSubmit = e => {
+        e.preventDefault()
+
+        if([nombre, descripcion, fechaEntrega, prioridad].includes('')){
+            mostrarAlerta({
+                msg: 'Todos los campos son obligatorios',
+                error: true
+            })
+            return
+        }
+
+        submitTarea({nombre, descripcion, fechaEntrega, prioridad, proyecto: params.id})
+    }
+    
+    const {msg} = alerta
+
     return (
         <Transition.Root show={ modalFormularioTarea } as={Fragment}>
             <Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto" onClose={ handleModalTarea }>
@@ -68,8 +89,11 @@ const ModalFormularioTarea = () => {
                                         Crear Tarea
                                     </Dialog.Title>
 
+                                    {msg && <Alerta alerta={alerta} />}
+
                                     <form
                                         className='my-10'
+                                        onSubmit={handleSubmit}
                                     >
                                         <div className='mb-5'>
                                             <label 
@@ -103,6 +127,23 @@ const ModalFormularioTarea = () => {
                                                 className='border w-full p-2 mt-2 placeholder-gray-400 rounded-md'
                                                 value={descripcion}
                                                 onChange={e => setDescripcion(e.target.value)}
+                                            />
+                                        </div>
+
+                                        <div className='mb-5'>
+                                            <label 
+                                                htmlFor="fecha-entrega"
+                                                className='text-gray-700 uppercase font-bold text-sm'
+                                            >
+                                                Fecha de Entrega
+                                            </label>
+
+                                            <input 
+                                                type="date" 
+                                                id='fecha-entrega'
+                                                className='border w-full p-2 mt-2 placeholder-gray-400 rounded-md'
+                                                value={fechaEntrega}
+                                                onChange={e => setFechaEntrega(e.target.value)}
                                             />
                                         </div>
 

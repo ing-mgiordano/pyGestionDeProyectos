@@ -167,3 +167,4 @@ Actualizamos el state para eliminar el py
 
 Creamos boton para agregar tareas al py
 Agregamos una ventana modal usando https://headlessui.com/ Headless UI. Intalamos una ventana modal npm install @headlessui/react y creamos un componente Modal. Creamos el formulario para crear tareas dentro del modal.
+Validamos el formulario y enviamos los datos obtenidos de tarea a la base de datos.
