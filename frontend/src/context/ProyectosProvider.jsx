@@ -11,6 +11,7 @@ const ProyectosProvider = ({children}) => {
     const [proyecto, setProyecto] = useState({})
     const [cargando, setCargando] = useState(false)
     const [modalFormularioTarea, setModalFormularioTarea] = useState(false)
+    const [tarea, setTarea] = useState({})
     
     const navigate = useNavigate()
 
@@ -187,11 +188,26 @@ const ProyectosProvider = ({children}) => {
 
     const handleModalTarea = () => {
         setModalFormularioTarea(!modalFormularioTarea)
+        setTarea({})
+    }
+
+    const handleModalEditarTarea = tarea => {
+        setTarea(tarea)
+        setModalFormularioTarea(true)
     }
 
     const submitTarea = async tarea => {
         /* console.log(tarea) */
 
+        if(tarea?.id) {
+            await editarTarea(tarea)
+        } else {
+            await crearTarea(tarea)
+        }
+
+    }
+
+    const editarTarea = async tarea => {
         try {
             const token = localStorage.getItem('token')
                 if(!token) return
@@ -203,16 +219,43 @@ const ProyectosProvider = ({children}) => {
                     Authorization: `Bearer ${token}`
                 }
             }
+    
+            const { data } = await clienteAxios.put(`/tareas/${tarea.id}`, tarea, config)
 
+            const proyectoActualizado = {...proyecto}
+            proyectoActualizado.tareas = proyectoActualizado.tareas.map(tareaState => 
+                tareaState._id === data._id ? data : tareaState)
+
+            setProyecto(proyectoActualizado)
+            setAlerta({})
+            setModalFormularioTarea(false)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    
+    const crearTarea = async tarea => {
+        try {
+            const token = localStorage.getItem('token')
+                if(!token) return
+    
+            //configuracion para el token de autenticacion (mirar el middleware)
+            const config = {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                }
+            }
+    
             const { data } = await clienteAxios.post('/tareas', tarea, config)
             /* console.log(data) */
-
+    
             //Agregamos tarea al State
             const proyectoActualizado = {...proyecto }
             proyectoActualizado.tareas = [...proyecto.tareas, data]
-
+    
             setProyecto(proyectoActualizado)
-
+    
             setAlerta({})
             setModalFormularioTarea(false)
         } catch (error) {
@@ -233,7 +276,9 @@ const ProyectosProvider = ({children}) => {
                 eliminarProyecto,
                 modalFormularioTarea,
                 handleModalTarea,
-                submitTarea
+                submitTarea,
+                handleModalEditarTarea,
+                tarea
             }}
         >
             {children}

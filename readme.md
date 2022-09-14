@@ -178,3 +178,5 @@ En proyectoController agrego un populate a la funcion de obtenerProyecto y en la
 Creamos el componente Tarea y extraemos la info de las tareas mediante un .map
 
 Actualizamos el state con las tareas y limpiamos el modal una vez q se haya creado la tarea
+
+Creamos funcion para editar tareas. Realizamos la actualizacion del state con la tarea actualizada
