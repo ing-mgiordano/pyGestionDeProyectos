@@ -173,4 +173,6 @@ En el backend almacenamos el ID de las tareas en los proyectos que pertenecen c/
 
 En tareasController agregamos la tarea mediante un push(). (lo podemos usar porq es node, no react)
 
-En proyectoController agrego un populate a la funcion de obtenerProyecto y en la funcion obtenerProyectos agregamos select("-tareas") para que no me liste las tareas cuando consulto los proyectos en general
+En proyectoController agrego un populate a la funcion de obtenerProyecto y en la funcion obtenerProyectos agregamos select("-tareas") para que no me liste las tareas cuando consulto los proyectos en general.
+
+Creamos el componente Tarea y extraemos la info de las tareas mediante un .map
