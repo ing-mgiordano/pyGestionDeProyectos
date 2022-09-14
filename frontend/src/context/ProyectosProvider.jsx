@@ -12,6 +12,7 @@ const ProyectosProvider = ({children}) => {
     const [cargando, setCargando] = useState(false)
     const [modalFormularioTarea, setModalFormularioTarea] = useState(false)
     const [tarea, setTarea] = useState({})
+    const [modalEliminarTarea, setModalEliminarTarea] = useState(false)
     
     const navigate = useNavigate()
 
@@ -196,6 +197,11 @@ const ProyectosProvider = ({children}) => {
         setModalFormularioTarea(true)
     }
 
+    const handleModalEliminarTarea = tarea => {
+        setTarea(tarea)
+        setModalEliminarTarea(!modalEliminarTarea)
+    }
+
     const submitTarea = async tarea => {
         /* console.log(tarea) */
 
@@ -263,6 +269,43 @@ const ProyectosProvider = ({children}) => {
         }
     }
 
+    const eliminarTarea = async () => {
+        try {
+            const token = localStorage.getItem('token')
+                if(!token) return
+    
+            //configuracion para el token de autenticacion (mirar el middleware)
+            const config = {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                }
+            }
+
+            const { data } = await clienteAxios.delete(`/tareas/${tarea._id}`, config)
+
+            //Sincronizamos el state
+            const proyectoActualizado = {...proyecto}
+            proyectoActualizado.tareas = proyectoActualizado.tareas.filter(tareaState => 
+                tareaState._id !== tarea._id
+            )
+            /* console.log(proyectosActualizados) */
+            setProyecto(proyectoActualizado)
+            setAlerta({
+                msg: data.msg,
+                error: true
+            })
+            setModalEliminarTarea(false)
+            setTarea({})
+            
+            setTimeout(() => {
+                setAlerta({})
+            }, 3000)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
         <ProyectosContext.Provider
             value={{
@@ -278,7 +321,10 @@ const ProyectosProvider = ({children}) => {
                 handleModalTarea,
                 submitTarea,
                 handleModalEditarTarea,
-                tarea
+                tarea,
+                modalEliminarTarea,
+                handleModalEliminarTarea,
+                eliminarTarea
             }}
         >
             {children}
