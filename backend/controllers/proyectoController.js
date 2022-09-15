@@ -1,5 +1,5 @@
 import Proyecto from "../models/Proyecto.js"
-import Tarea from "../models/Tarea.js"
+import Usuario from "../models/Usuario.js"
 
 //Lista de py del usuario autenticado
 const obtenerProyectos = async (req, res) => {
@@ -100,6 +100,20 @@ const eliminarProyecto = async (req, res) => {
    }
 }
 
+//Buscar colaborador
+const buscarColaborador = async (req, res) => {
+     const {email} = req.body
+
+     const usuario = await Usuario.findOne({email}).select('-confirmado -createdAt -password -token -updatedAt -__v')
+
+     if(!usuario) {
+          const error = new Error('Usuario no encontrado')
+          return res.status(404).json({ msg: error.message })
+     }
+
+     res.json(usuario)
+}
+
 //Agregar colaborador
 const agregarColaborador = async (req, res) => {
 
@@ -116,6 +130,7 @@ export {
     obtenerProyecto,
     editarProyecto,
     eliminarProyecto,
+    buscarColaborador,
     agregarColaborador,
     eliminarColaborador
 }
