@@ -181,3 +181,6 @@ Actualizamos el state con las tareas y limpiamos el modal una vez q se haya crea
 
 Creamos funcion para editar tareas. Realizamos la actualizacion del state con la tarea actualizada
 Creamos funcion para eliminar tareas. Realizamos la actualizacion del state
+
+Creamos funcion para añadir un colaborador al proyecto
+Creamos la ruta en app.jsx para añadir colaborador y el componenete NuevoColaborador y el componente FormularioColaborador para agregar los datos
