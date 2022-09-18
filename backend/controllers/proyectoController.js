@@ -31,7 +31,9 @@ const nuevoProyecto = async (req, res) => {
 const obtenerProyecto = async (req, res) => {
      const {id} = req.params
      /* console.log(id) */
-     const proyecto = await Proyecto.findById(id).populate("tareas")
+     const proyecto = await Proyecto.findById(id)
+          .populate("tareas")
+          .populate("colaboradores", "nombre email")
      /* console.log(proyecto) */
      if (!proyecto) {
         const error = new Error("No Encontrado")
@@ -116,7 +118,43 @@ const buscarColaborador = async (req, res) => {
 
 //Agregar colaborador
 const agregarColaborador = async (req, res) => {
+     const proyecto = await Proyecto.findById(req.params.id)
 
+     if(!proyecto) {
+          const error = new Error('Proyecto no encontrado')
+          return res.status(404).json({ msg: error.message })
+     }
+
+     if(proyecto.creador.toString() !== req.usuario._id.toString()) {
+          const error = new Error('Accion no Válida')
+          return res.status(404).json({ msg: error.message })
+     }
+
+     const {email} = req.body
+
+     const usuario = await Usuario.findOne({email}).select('-confirmado -createdAt -password -token -updatedAt -__v')
+
+     if(!usuario) {
+          const error = new Error('Usuario no encontrado')
+          return res.status(404).json({ msg: error.message })
+     }
+     //El creador del py no puede ser colaborador
+     if(proyecto.creador.toString() === usuario._id.toString()) {
+          const error = new Error('El Administrador no puede agregarse como Colaborador')
+          return res.status(404).json({ msg: error.message })
+     }
+     //Revisar si el colaborador esta o no ya agregado
+     /* console.log('Identidad usuario', usuario._id) */
+
+     if(proyecto.colaboradores.includes(usuario._id)) {
+          const error = new Error('El usuario ya pertenece al Proyecto')
+          return res.status(404).json({ msg: error.message })
+     }
+
+     //si todo esta ok
+     proyecto.colaboradores.push(usuario._id)
+     await proyecto.save()
+     res.json({msg: "Colaborador agregado Correctamente"})
 }
 
 //Elimiar colaborador

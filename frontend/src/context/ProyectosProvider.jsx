@@ -146,7 +146,10 @@ const ProyectosProvider = ({children}) => {
             const { data } = await clienteAxios.get(`/proyectos/${id}`, config)
             setProyecto(data)
         } catch (error) {
-            console.log(error)
+            setAlerta({
+                msg: error.response.data.msg,
+                error: true
+            })
         } finally {
             setCargando(false)
         }
@@ -322,6 +325,8 @@ const ProyectosProvider = ({children}) => {
             } 
 
             const { data } = await clienteAxios.post('/proyectos/colaboradores', {email}, config)
+            /* console.log(data)*/
+
             setColaborador(data)
             setAlerta({})
         } catch (error) {
@@ -335,7 +340,37 @@ const ProyectosProvider = ({children}) => {
     }
 
     const agregarColaborador = async email => {
-        console.log(email)
+        /* console.log(email)
+        console.log(proyecto) */
+    
+        try {
+            const token = localStorage.getItem('token')
+                if(!token) return
+    
+            //configuracion para el token de autenticacion (mirar el middleware)
+            const config = {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                }
+            } 
+
+            const { data } = await clienteAxios.post(`/proyectos/colaboradores/${proyecto._id}`, email, config)
+            /* console.log(data) */
+
+            setAlerta({
+                msg: data.msg,
+                error: false,
+            })
+            setColaborador({})
+            setAlerta({})
+            
+        } catch (error) {
+            setAlerta({
+                msg: error.response.data.msg,
+                error: true,
+            })
+        }
     }
 
     return (

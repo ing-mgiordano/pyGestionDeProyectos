@@ -16,10 +16,13 @@ const router = express.Router()
 router.route('/')
     .get(checkAuth, obtenerProyectos)
     .post(checkAuth, nuevoProyecto)
-router.route('/:id')
+
+router
+    .route('/:id')
     .get(checkAuth, obtenerProyecto)
     .put(checkAuth, editarProyecto)
     .delete(checkAuth, eliminarProyecto) //delete eliminar un recurso completo
+
 router.post('/colaboradores', checkAuth, buscarColaborador)
 router.post('/colaboradores/:id', checkAuth, agregarColaborador)
 router.delete('/colaboradores/:id', checkAuth, eliminarColaborador)

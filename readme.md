@@ -183,4 +183,5 @@ Creamos funcion para editar tareas. Realizamos la actualizacion del state con la
 Creamos funcion para eliminar tareas. Realizamos la actualizacion del state
 
 Creamos funcion para añadir un colaborador al proyecto
-Creamos la ruta en app.jsx para añadir colaborador y el componenete NuevoColaborador y el componente FormularioColaborador para agregar los datos
+Creamos la ruta en app.jsx para añadir colaborador y el componenete NuevoColaborador y el componente FormularioColaborador para agregar los datos.
+
