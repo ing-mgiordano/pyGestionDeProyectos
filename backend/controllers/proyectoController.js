@@ -3,9 +3,12 @@ import Usuario from "../models/Usuario.js"
 
 //Lista de py del usuario autenticado
 const obtenerProyectos = async (req, res) => {
-    const proyectos = await Proyecto.find()
-    .where("creador")
-    .equals(req.usuario)
+    const proyectos = await Proyecto.find({  //por default es '$and'
+     $or : [
+          {colaboradores: { $in: req.usuario}},
+          {creador: { $in: req.usuario}}
+     ]
+    })
     .select("-tareas")
 
     res.json(proyectos)
@@ -40,8 +43,12 @@ const obtenerProyecto = async (req, res) => {
         return res.status(404).json({ msg: error.message })
      }
 
-     console.log(proyecto.creador.toString() === req.usuario._id.toString()) // compruevo que es el usuario el creador del proyecto
-     if (proyecto.creador.toString() !== req.usuario._id.toString()) {
+     /* console.log(proyecto.creador.toString() === req.usuario._id.toString()) */ // compruevo que es el usuario el creador del proyecto
+     if (proyecto.creador.toString() !== req.usuario._id.toString() && 
+          !proyecto.colaboradores.some(
+          (colaborador) => colaborador._id.toString() === req.usuario._id.toString()
+          )
+     ) {
         const error = new Error("No Tienes Permisos")
         return res.status(401).json({ msg: error.message })
      }

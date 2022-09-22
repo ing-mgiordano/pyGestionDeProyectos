@@ -146,6 +146,7 @@ const ProyectosProvider = ({children}) => {
 
             const { data } = await clienteAxios.get(`/proyectos/${id}`, config)
             setProyecto(data)
+            setAlerta({})
         } catch (error) {
             setAlerta({
                 msg: error.response.data.msg,
