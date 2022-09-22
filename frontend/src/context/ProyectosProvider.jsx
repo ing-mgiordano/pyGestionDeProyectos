@@ -418,6 +418,26 @@ const ProyectosProvider = ({children}) => {
         }
     }
 
+    const completarTarea = async id => {
+        
+        try {
+            const token = localStorage.getItem('token')
+                if(!token) return
+    
+            //configuracion para el token de autenticacion (mirar el middleware)
+            const config = {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                }
+            } 
+            const {data} = await clienteAxios.post(`/tareas/estado/${id}`, {}, config)
+            console.log(data)
+        } catch (error) {
+            console.log(error.response)
+        }
+    }
+
     return (
         <ProyectosContext.Provider
             value={{
@@ -442,7 +462,8 @@ const ProyectosProvider = ({children}) => {
                 agregarColaborador,
                 handleEliminarColaborador,
                 modalEliminarColaborador,
-                eliminarColaborador
+                eliminarColaborador,
+                completarTarea
             }}
         >
             {children}
