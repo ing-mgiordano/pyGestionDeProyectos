@@ -84,7 +84,12 @@ const eliminarTarea = async (req, res) => {
     }
 
     try {
-        await tarea.deleteOne()
+        const proyecto = await Proyecto.findById(tarea.proyecto)
+        proyecto.tareas.pull(tarea._id)
+        // si tengo muchos await puedo usar await Promise para no bloquear las lineas de abajo
+        // se inician al mismo tiempo.. no se bloquean uno al otro
+        await Promise.allSettled([await proyecto.save(), await tarea.deleteOne()])
+        
         res.json({ msg: "Tarea Eliminada Correctamente"})
     } catch (error) {
         console.log(error)
