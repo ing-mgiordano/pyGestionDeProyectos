@@ -192,3 +192,7 @@ Mostramos los proyectos dentro del perfil de los usuarios que son colaboradores 
 Restringimos los permisos para crear o eliminar tareas y agregar colaboradores. Para esto creamos un hook useAdmin y verificamos que proyecto.creador === auth._id
 
 Creamos funcion para cambiar el estado de las tareas(incompletas o completas)
+
+Agregamos etiqueta de colaborador si corresponde en cada proyecto.
+
+Mostramos quien completo una tarea
