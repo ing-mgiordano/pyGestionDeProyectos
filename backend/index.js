@@ -51,5 +51,10 @@ const io = new Server(servidor, {
 
 io.on('connection', (socket) => {
     console.log('Conectado')
-    
+    //Definimos eventos de socket
+
+    socket.on('prueba', () => {
+        console.log('prueba')
+    })
+
 })

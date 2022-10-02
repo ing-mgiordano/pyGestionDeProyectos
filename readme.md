@@ -206,3 +206,4 @@ En backend instalamos: npm i socket.io (servidor)
 Añadimos socket.io al servidor.
 
 Conectamos cocket con el frontend
+Enviamos datos desde el Front al back con Socket. usamos el evento emit() para emitir un evento y on() para decirle que hacer con ese evento
