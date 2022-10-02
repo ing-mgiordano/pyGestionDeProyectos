@@ -195,4 +195,6 @@ Creamos funcion para cambiar el estado de las tareas(incompletas o completas)
 
 Agregamos etiqueta de colaborador si corresponde en cada proyecto.
 
-Mostramos quien completo una tarea
+Mostramos quien completo una tarea.
+
+Añadimos un buscador de proyectos.
