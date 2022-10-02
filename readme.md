@@ -204,3 +204,5 @@ En Frontend intalamos: npm i socket.io-client
 En backend instalamos: npm i socket.io (servidor)
 
 Añadimos socket.io al servidor.
+
+Conectamos cocket con el frontend
