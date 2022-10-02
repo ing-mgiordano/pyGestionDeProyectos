@@ -202,3 +202,5 @@ Añadimos un buscador de proyectos.
 Instalamos socket.IO (https://socket.io/). Instalamos la API del servidor y la API del cliente
 En Frontend intalamos: npm i socket.io-client
 En backend instalamos: npm i socket.io (servidor)
+
+Añadimos socket.io al servidor.
