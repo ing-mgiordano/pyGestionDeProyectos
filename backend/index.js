@@ -44,17 +44,38 @@ const servidor = app.listen(PORT, () => {
 import { Server } from 'socket.io'
 
 const io = new Server(servidor, {
+    pingTimeout: 60000,
     cors: {
         origin: process.env.FRONTEND_URL,
     },
 })
 
-io.on('connection', (socket) => {
+io.on("connection", (socket) => {
     console.log('Conectado')
     //Definimos eventos de socket
 
-    socket.on('prueba', () => {
-        console.log('prueba')
+    socket.on("abrir proyecto", (proyecto) => {
+        socket.join(proyecto)
     })
 
+    socket.on("nueva tarea", tarea => {
+        const proyecto = tarea.proyecto
+        socket.to(proyecto).emit("tarea agregada", tarea)
+    })
+
+    socket.on("eliminar tarea", tarea => {
+        const proyecto = tarea.proyecto
+        socket.to(proyecto).emit("tarea eliminada", tarea)
+    })
+
+    socket.on("actualiazar tarea", tarea => {
+        /* console.log(tarea) */
+        const proyecto = tarea.proyecto._id
+        socket.to(proyecto).emit("tarea actualizada", tarea)
+    })
+
+    socket.on("cambiar estado", tarea => {
+        const proyecto = tarea.proyecto._id
+        socket.to(proyecto).emit("nuevo estado", tarea)
+    })
 })

@@ -205,5 +205,9 @@ En backend instalamos: npm i socket.io (servidor)
 
 Añadimos socket.io al servidor.
 
-Conectamos cocket con el frontend
+Conectamos socket con el frontend
 Enviamos datos desde el Front al back con Socket. usamos el evento emit() para emitir un evento y on() para decirle que hacer con ese evento
+
+Enviamos datos del back al front con Socket.
+
+Modificamos la funcion agrgar tarea, editar, eliminar y completar con socket.io para que se actuaize en tiempo real en todos los usuariios 
