@@ -211,3 +211,5 @@ Enviamos datos desde el Front al back con Socket. usamos el evento emit() para e
 Enviamos datos del back al front con Socket.
 
 Modificamos la funcion agrgar tarea, editar, eliminar y completar con socket.io para que se actuaize en tiempo real en todos los usuariios 
+
+Creamos funcion para cerrar sesion y corregimos la carga de los proyectos.
