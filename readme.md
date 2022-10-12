@@ -213,3 +213,12 @@ Enviamos datos del back al front con Socket.
 Modificamos la funcion agrgar tarea, editar, eliminar y completar con socket.io para que se actuaize en tiempo real en todos los usuariios 
 
 Creamos funcion para cerrar sesion y corregimos la carga de los proyectos.
+
+Hacemos el deployment del backend en Heroku
+ iniciamos sesion en la terminal con heroku login.
+ creamos una app nueva con heroku create.
+ sincronizamos el repositorio de git con heroku con git push heroku main
+ Configuramos las variables de entorno en setting - config vars y pegamos los datos de .env
+Hacemos el deployment del frontend en Netlify
+ cremos un sitio nuevo y en opciones avanzadas agregamos las variables de entorno
+Conectamos backen con frontend.
