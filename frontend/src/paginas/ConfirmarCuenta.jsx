@@ -17,7 +17,7 @@ const ConfirmarCuenta = () => {
       try {
         const url = `/usuarios/confirmar/${id}`  // url creada en Postman para confirmar cuenta
         const {data} = await clienteAxios(url) //get por default
-        console.log(data)
+        /* console.log(data) */
 
         setAlerta({
           msg: data.msg,
