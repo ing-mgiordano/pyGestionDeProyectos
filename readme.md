@@ -1,5 +1,22 @@
 ## APP Gestion de PY
 
+## URL APP: https://uptask-mern-ingmg.netlify.app
+
+# Usuarios de prueba:
+correo@correo.com contraseña: password
+correo2@corre.com contraseña: qwerty
+
+o crear nuevo usuario y contactarme ing.mgiordano@gmail.com
+
+
+
+
+
+
+
+
+
+
 https://mongoosejs.com/docs/guide.html
 
 #BACKEND
